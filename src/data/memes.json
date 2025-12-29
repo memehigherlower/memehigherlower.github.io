@@ -91,15 +91,6 @@
       "category": "Rage Comic"
     },
     {
-      "id": "stonks",
-      "name": "Stonks",
-      "views": 18000000,
-      "imageUrl": "/images/memes/stonks.png",
-      "description": "Meme Man in front of rising stock graph",
-      "year": 2017,
-      "category": "Surreal"
-    },
-    {
       "id": "this-is-fine",
       "name": "This Is Fine",
       "views": 24000000,
@@ -1198,15 +1189,6 @@
       "category": "Reaction"
     },
     {
-      "id": "surprised-tom",
-      "name": "Surprised Tom",
-      "views": 14000000,
-      "imageUrl": "/images/memes/surprised-tom.png",
-      "description": "Tom from Tom and Jerry with shocked face",
-      "year": 2019,
-      "category": "Cartoon"
-    },
-    {
       "id": "unsettled-tom",
       "name": "Unsettled Tom",
       "views": 13500000,
@@ -1246,7 +1228,7 @@
       "id": "grandma-finds-the-internet",
       "name": "Grandma Finds The Internet",
       "views": 12500000,
-      "imageUrl": "/images/memes/grandma-finds-the-internet.png",
+      "imageUrl": "/images/memes/grandma-finds-the-internet.jpg",
       "description": "Elderly woman confused by technology",
       "year": 2012,
       "category": "Image Macro"
@@ -1363,7 +1345,7 @@
       "id": "sad-cat-thumbs-up",
       "name": "Sad Cat Thumbs Up",
       "views": 11000000,
-      "imageUrl": "/images/memes/sad-cat-thumbs-up.jpg",
+      "imageUrl": "/images/memes/sad-cat-thumbs-up.png",
       "description": "Crying cat giving thumbs up",
       "year": 2019,
       "category": "Animal"
@@ -1408,7 +1390,7 @@
       "id": "men-will-literally",
       "name": "Men Will Literally",
       "views": 9500000,
-      "imageUrl": "/images/memes/men-will-literally.png",
+      "imageUrl": "/images/memes/men-will-literally.jpg",
       "description": "Men avoiding therapy by doing extreme things",
       "year": 2019,
       "category": "Text"
@@ -1474,15 +1456,6 @@
       "imageUrl": "/images/memes/hold-up.png",
       "description": "Stopping to process something unexpected",
       "year": 2018,
-      "category": "Reaction"
-    },
-    {
-      "id": "math-lady",
-      "name": "Calculating Woman",
-      "views": 12500000,
-      "imageUrl": "/images/memes/math-lady.jpg",
-      "description": "Woman doing complex calculations in head",
-      "year": 2017,
       "category": "Reaction"
     },
     {
@@ -1594,15 +1567,6 @@
       "category": "Movie"
     },
     {
-      "id": "cat-looking-away",
-      "name": "Cat Looking Away",
-      "views": 9500000,
-      "imageUrl": "/images/memes/cat-looking-away.jpg",
-      "description": "Cat turning head to avoid something",
-      "year": 2019,
-      "category": "Animal"
-    },
-    {
       "id": "two-soyjaks-pointing",
       "name": "Two Soyjaks Pointing",
       "views": 11000000,
@@ -1685,5 +1649,5 @@
     }
   ],
   "lastUpdated": "2025-12-25",
-  "totalMemes": 187
+  "totalMemes": 183
 }
