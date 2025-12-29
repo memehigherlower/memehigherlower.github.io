@@ -22,7 +22,11 @@ export function MemeCard({
     }
   };
 
-  const imageUrl = imageError && meme.fallbackImageUrl ? meme.fallbackImageUrl : meme.imageUrl;
+  const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL.slice(0, -1)
+    : import.meta.env.BASE_URL;
+  const rawImageUrl = imageError && meme.fallbackImageUrl ? meme.fallbackImageUrl : meme.imageUrl;
+  const imageUrl = rawImageUrl.startsWith('/') ? `${baseUrl}${rawImageUrl}` : rawImageUrl;
 
   const cardClass = [
     styles.card,

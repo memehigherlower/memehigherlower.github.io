@@ -1,5 +1,5 @@
 import { useReducer, useCallback, useMemo } from 'react';
-import type { Meme, GameState, GameAction, GamePhase } from '../types';
+import type { Meme, GameState, GameAction } from '../types';
 import { getRandomMeme, getRandomMemePair } from '../utils/shuffleMemes';
 
 const initialState: GameState = {
