@@ -1,0 +1,249 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  z-index: 1100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-hover);
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.closeButton:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.yourScore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.yourScoreLabel {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.yourScoreRank {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.tableContainer {
+  overflow-y: auto;
+  flex: 1;
+  margin: 0 calc(-1 * var(--spacing-md));
+  padding: 0 var(--spacing-md);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  padding: var(--spacing-sm) var(--spacing-xs);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.rankHeader {
+  width: 50px;
+  text-align: center !important;
+}
+
+.nameHeader {
+  flex: 1;
+}
+
+.scoreHeader {
+  width: 60px;
+  text-align: right !important;
+}
+
+.dateHeader {
+  width: 90px;
+  text-align: right !important;
+}
+
+.row {
+  transition: background var(--transition-fast);
+}
+
+.row:hover {
+  background: var(--color-surface-hover);
+}
+
+.row td {
+  padding: var(--spacing-sm) var(--spacing-xs);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.currentPlayer {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.currentPlayer:hover {
+  background: rgba(99, 102, 241, 0.25);
+}
+
+.rank {
+  text-align: center;
+  width: 50px;
+}
+
+.rankNumber {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.medal {
+  font-size: 1.25rem;
+}
+
+.name {
+  font-weight: 500;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.youBadge {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--color-primary);
+  color: white;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.score {
+  font-weight: 700;
+  color: var(--color-success);
+  text-align: right;
+  font-size: 1rem;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  color: var(--color-text);
+}
+
+.emptyHint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+  .modal {
+    padding: var(--spacing-lg);
+    max-height: 85vh;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .dateHeader,
+  .date {
+    display: none;
+  }
+
+  .table th,
+  .row td {
+    padding: var(--spacing-xs);
+  }
+}

@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
-import type { Meme } from '../types';
+import { useEffect, useState, useCallback } from 'react';
+import type { Meme, LeaderboardEntry } from '../types';
 import { useGameState } from '../hooks/useGameState';
 import { useHighScore } from '../hooks/useHighScore';
+import { useLeaderboard } from '../hooks/useLeaderboard';
 import { StartScreen } from './StartScreen';
 import { MemeComparison } from './MemeComparison';
 import { ScoreDisplay } from './ScoreDisplay';
 import { GameOverModal } from './GameOverModal';
+import { Leaderboard } from './Leaderboard';
 import styles from './GameContainer.module.css';
 
 interface GameContainerProps {
@@ -15,6 +17,11 @@ interface GameContainerProps {
 export function GameContainer({ memes }: GameContainerProps) {
   const { highScore, updateHighScore } = useHighScore();
   const { state, startGame, guessHigher, guessLower, playAgain } = useGameState(memes, highScore);
+  const { entries, addEntry, getPlayerRank } = useLeaderboard();
+
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [currentGameEntry, setCurrentGameEntry] = useState<LeaderboardEntry | null>(null);
+  const [hasSubmittedScore, setHasSubmittedScore] = useState(false);
 
   // Update high score when game ends
   useEffect(() => {
@@ -23,6 +30,33 @@ export function GameContainer({ memes }: GameContainerProps) {
     }
   }, [state.phase, state.currentStreak, updateHighScore]);
 
+  // Reset submission state when starting a new game
+  useEffect(() => {
+    if (state.phase === 'playing') {
+      setCurrentGameEntry(null);
+      setHasSubmittedScore(false);
+    }
+  }, [state.phase]);
+
+  const handleSubmitScore = useCallback(
+    (playerName: string) => {
+      const entry = addEntry(playerName, state.currentStreak);
+      if (entry) {
+        setCurrentGameEntry(entry);
+        setHasSubmittedScore(true);
+      }
+    },
+    [addEntry, state.currentStreak]
+  );
+
+  const handleViewLeaderboard = useCallback(() => {
+    setShowLeaderboard(true);
+  }, []);
+
+  const handleCloseLeaderboard = useCallback(() => {
+    setShowLeaderboard(false);
+  }, []);
+
   const isNewHighScore = state.currentStreak > highScore;
   const showComparisonViewCount = state.phase === 'revealing' || state.lastGuessCorrect !== null;
   const revealResult = state.lastGuessCorrect === true
@@ -30,6 +64,8 @@ export function GameContainer({ memes }: GameContainerProps) {
     : state.lastGuessCorrect === false
     ? 'incorrect'
     : null;
+
+  const playerRank = currentGameEntry ? getPlayerRank(currentGameEntry.id) : null;
 
   return (
     <div className={styles.container}>
@@ -73,6 +109,18 @@ export function GameContainer({ memes }: GameContainerProps) {
           highScore={Math.max(highScore, state.currentStreak)}
           isNewHighScore={isNewHighScore}
           onPlayAgain={playAgain}
+          onSubmitScore={handleSubmitScore}
+          onViewLeaderboard={handleViewLeaderboard}
+          hasSubmittedScore={hasSubmittedScore}
+          playerRank={playerRank}
+        />
+      )}
+
+      {showLeaderboard && (
+        <Leaderboard
+          entries={entries}
+          currentPlayerEntry={currentGameEntry}
+          onClose={handleCloseLeaderboard}
         />
       )}
     </div>

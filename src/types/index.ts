@@ -45,9 +45,26 @@ export interface GameOverModalProps {
   highScore: number;
   isNewHighScore: boolean;
   onPlayAgain: () => void;
+  onSubmitScore: (playerName: string) => void;
+  onViewLeaderboard: () => void;
+  hasSubmittedScore: boolean;
+  playerRank: number | null;
 }
 
 export interface ScoreDisplayProps {
   currentStreak: number;
   highScore: number;
+}
+
+export interface LeaderboardEntry {
+  id: string;
+  playerName: string;
+  score: number;
+  timestamp: number;
+}
+
+export interface LeaderboardProps {
+  entries: LeaderboardEntry[];
+  currentPlayerEntry?: LeaderboardEntry | null;
+  onClose: () => void;
 }
