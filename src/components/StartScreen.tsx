@@ -2,10 +2,11 @@ import styles from './StartScreen.module.css';
 
 interface StartScreenProps {
   onStart: () => void;
+  onViewLeaderboard: () => void;
   highScore: number;
 }
 
-export function StartScreen({ onStart, highScore }: StartScreenProps) {
+export function StartScreen({ onStart, onViewLeaderboard, highScore }: StartScreenProps) {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -41,9 +42,14 @@ export function StartScreen({ onStart, highScore }: StartScreenProps) {
           </div>
         )}
 
-        <button className={styles.playButton} onClick={onStart}>
-          Play Now
-        </button>
+        <div className={styles.buttonGroup}>
+          <button className={styles.playButton} onClick={onStart}>
+            Play Now
+          </button>
+          <button className={styles.leaderboardButton} onClick={onViewLeaderboard}>
+            View Leaderboard
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -70,7 +70,7 @@ export function GameContainer({ memes }: GameContainerProps) {
   return (
     <div className={styles.container}>
       {state.phase === 'start' && (
-        <StartScreen onStart={startGame} highScore={highScore} />
+        <StartScreen onStart={startGame} onViewLeaderboard={handleViewLeaderboard} highScore={highScore} />
       )}
 
       {(state.phase === 'playing' || state.phase === 'revealing') &&
